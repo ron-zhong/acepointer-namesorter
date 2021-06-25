@@ -41,7 +41,7 @@ namespace AcePointer.NameSorter.Web.Razors
             {
                 await DataGrid.ExcelExport();
             }
-            else
+            else if (args.Item.Id.Contains("text", StringComparison.InvariantCultureIgnoreCase))
             {
                 NavigationManager.NavigateTo(DownloadEndpoint,true);
             }
