@@ -1,0 +1,55 @@
+﻿@page "/"
+@namespace AcePointer.NameSorter.Web.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+    int timer = 5;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AcePointer Name Sorter (Ron)</title>
+
+    <base href="~/" />
+
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="https://acepointer.sg/wp-content/uploads/fbrfg/favicon-32x32.png">
+
+    <!-- Stylesheets -->
+    @*<link rel="stylesheet" href="css/syncfusion/material.css" />*@
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    @*<link rel="stylesheet" href="AcePointer.NameSorter.Web.styles.css">*@
+</head>
+<body>
+    <app>
+        <component type="typeof(App)" render-mode="Server" />
+    </app>
+
+    <div id="blazor-host-ui">
+        <div style="position: absolute; left: 50%;  top: 50%; transform: translate(-50%,-60%); text-align:center">
+            <a href="" class="reload text-black-50" style="font-size:larger;font-weight:500">
+                <img class="mims-logo" src="https://acepointer.sg/wp-content/uploads/2020/11/Ap_Logo@2x.png" alt="ap-logo" width="200" height="45" />
+            </a>
+            @*<br />
+            <img class="mims-logo" src="/img/loading.gif" width="200" />
+            <br />*@
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/site.js"></script>
+    <script src="_framework/blazor.server.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+            crossorigin="anonymous"></script>
+    <script>
+    var i = @timer;
+    var interval = setInterval(countDown, 1000);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿@inherits LayoutComponentBase
+
+@inject IJSRuntime JS
+
+@code{
+
+    bool Display { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // for demo purpose
+            await Task.Delay(1000);
+
+            // UI + DOM Update
+            await JS.InvokeVoidAsync("MainLayoutLoaded");
+            Display = true;
+            StateHasChanged();
+        }
+    }
+}
+
+@if (Display)
+{
+    <div class="page">
+        <div class="main p-5 ">
+            <div class="content p-3 mx-auto card" style="max-width:800px; height:100%">
+                @Body
+            </div>
+        </div>
+    </div>
+}
