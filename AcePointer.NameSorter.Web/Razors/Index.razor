@@ -1,6 +1,31 @@
 ﻿@page "/"
 
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Grids
+
 <div class="row">
-    <div class="col"></div>
-    <div class="col"></div>
+    <div class="col-7">
+        <SfGrid ID="Grid" @ref="@DataGrid" 
+                DataSource="@Persons"
+                AllowPaging=true AllowSorting=true
+                AllowExcelExport="true" AllowPdfExport="true"
+                Toolbar="@(new List<string>() { "Search", "1.PDF", "2.Excel", "3.Text (Sorted by Last Name)"})">
+
+            <GridPageSettings PageCount=3 PageSize=10></GridPageSettings>
+            <GridEvents OnToolbarClick="ToolbarClickHandler" TValue="Person"></GridEvents>
+
+            <GridColumns>
+                <GridColumn Field=@nameof(Person.FirstName) HeaderText="First Name"></GridColumn>
+                <GridColumn Field=@nameof(Person.LastName) HeaderText="Last Name"></GridColumn>
+            </GridColumns>
+        </SfGrid>
+    </div>
+
+
+    <div class="col-5">
+        <SfUploader AutoUpload="true" ShowFileList="true" Multiple="false" AllowedExtensions=".txt">
+            <UploaderEvents ValueChange="OnUpload"></UploaderEvents>
+        </SfUploader>
+    </div>
 </div>

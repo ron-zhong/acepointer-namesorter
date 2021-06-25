@@ -13,4 +13,14 @@
     <Folder Include="Shared\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AcePointer.NameSorter.Shared\AcePointer.NameSorter.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\unsorted-names-list.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

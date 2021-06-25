@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Syncfusion.Licensing;
 using Syncfusion.Blazor;
+using AcePointer.NameSorter.Repo;
 
 namespace AcePointer.NameSorter.Web
 {
@@ -29,7 +30,9 @@ namespace AcePointer.NameSorter.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddMvcCore();
             services.AddServerSideBlazor();
+            services.AddSingleton<IPersonRepo, PersonRepo>();
 
             #region 3rd Party Package & Componenet
             services.AddSyncfusionBlazor();
@@ -61,6 +64,11 @@ namespace AcePointer.NameSorter.Web
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller}/{action}");
+
+                endpoints.MapControllers();
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });

@@ -13,12 +13,13 @@ namespace AcePointer.NameSorter.UnitTest
         const string DataSource = "./Data/unsorted-names-list.txt";
 
         List<Person> Persons = new();
-        PersonRepo PersonRepo = new(DataSource);
+        PersonRepo PersonRepo = new();
 
         [SetUp]
         public void Setup()
         {
-            Persons = PersonRepo.Load();
+            PersonRepo.Load(dataSource: DataSource);
+            Persons = PersonRepo.GetPersons();
         }
 
         [Test]
