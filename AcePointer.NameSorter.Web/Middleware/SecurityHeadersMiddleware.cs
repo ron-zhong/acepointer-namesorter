@@ -21,10 +21,10 @@ namespace AcePointer.NameSorter.Web
         {
             // Use HSTS preload
             // https://www.checkbot.io/guide/security/?utm_source=checkbot-extension&utm_medium=extension&utm_content=learn-more#rule-allow-hsts-preload
-            context.Response.Headers.Add("strict-transport-security", new StringValues(
-                "max-age=31536000; " +
-                "includeSubDomains; " +
-                "preload;"));
+            //context.Response.Headers.Add("strict-transport-security", new StringValues(
+            //    "max-age=31536000; " +
+            //    "includeSubDomains; " +
+            //    "preload;"));
 
             // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
             // TODO Change the value depending of your needs
