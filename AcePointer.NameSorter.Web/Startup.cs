@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Syncfusion.Licensing;
 using Syncfusion.Blazor;
 using AcePointer.NameSorter.Repo;
+using Microsoft.AspNetCore.Http;
 
 namespace AcePointer.NameSorter.Web
 {
@@ -59,8 +60,17 @@ namespace AcePointer.NameSorter.Web
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
+
+            #region Web Security Implementation
+            app.UseCookiePolicy(
+                new CookiePolicyOptions
+                {
+                    Secure = CookieSecurePolicy.Always,
+                    HttpOnly = Microsoft.AspNetCore.CookiePolicy.HttpOnlyPolicy.Always
+                });
+            app.UseMiddleware<SecurityHeadersMiddleware>();
+            #endregion
 
             app.UseEndpoints(endpoints =>
             {
