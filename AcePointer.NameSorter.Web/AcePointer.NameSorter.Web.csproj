@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
+    <PackageReference Include="Syncfusion.Blazor" Version="19.1.0.69" />
+    <PackageReference Include="Syncfusion.Licensing" Version="19.1.0.69" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Shared\" />
   </ItemGroup>
 

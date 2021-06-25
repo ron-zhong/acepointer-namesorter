@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Syncfusion.Licensing;
+using Syncfusion.Blazor;
 
 namespace AcePointer.NameSorter.Web
 {
@@ -28,11 +30,19 @@ namespace AcePointer.NameSorter.Web
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            #region 3rd Party Package & Componenet
+            services.AddSyncfusionBlazor();
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            #region 3rd Party Packages
+            SyncfusionLicenseProvider.RegisterLicense("NDYzMjcyQDMxMzkyZTMxMmUzME1zem9hNnhMVGo3Slo4U2svWUVUZUUzV3dZMkhmeG1zQys3aDFvK25DZzg9");
+            #endregion
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
